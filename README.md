@@ -1,4 +1,10 @@
+
+<div align="center">
+
 # 💧 SmartTank
+
+</div>
+<img src="https://res.cloudinary.com/dbpcmxdx4/image/upload/v1782398263/Presentacion/smart_v5gv47.png">
 
 ## 📖 Project Description
 
