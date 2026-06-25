@@ -1,0 +1,415 @@
+<style>
+    .container {
+        width: 100%;
+        margin: auto;
+        font-family: Arial, sans-serif;
+    }
+    h2 {
+        text-align: center;
+        color: #026292;
+    }
+    .info-cliente {
+        margin-Top: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        margin: auto;
+        background-Color: #E6E8EB;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        height: 45%;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+        padding-Bottom: 5px;
+        
+    }
+    .info-cliente p {
+        margin: 5px 0;
+        font-size: 18px;
+    }
+    .finalizado-true {
+        color: green;
+        font-weight: bold;
+    }
+    .finalizado-false {
+        color: red;
+        font-weight: bold;
+    }
+    .total-cobrado {
+        text-align: right;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: white;
+        
+    }
+    .detalles{
+        background-color: #46a7fd;
+        width: 100%;
+        align-items: center;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+    .letras{
+        font-size: 14;
+        font-Weight: "bold";
+        color: white;
+    }
+    .nombre{
+        width: 80%;
+        height: 15%;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        justify-items: center;
+        border-bottom-width: 2px;
+        border-bottom-color: #46a7fd;
+
+    }
+    .nombre-p{
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .datos{
+        width: 95%;
+        height: 12%;
+        display: flex; /* Asegura que los elementos estén en línea */
+        flex-direction: row; /* Por defecto en flex, pero lo incluimos para claridad */
+        align-items: center; /* Centra verticalmente */
+        border-bottom-width: 2px;
+        border-bottom-color: #46a7fd;
+    }
+    .datos-U{
+        width: 95%;
+        height: 12%;
+        display: flex; /* Asegura que los elementos estén en línea */
+        flex-direction: row; /* Por defecto en flex, pero lo incluimos para claridad */
+        align-items: center; /* Centra verticalmente */
+    }
+    .datos1{
+        width: 50%;
+        height: 100%;
+        display: flex; /* Asegura que los elementos estén en línea */
+        flex-direction: row; /* Por defecto en flex, pero lo incluimos para claridad */
+        align-items: center; /* Centra verticalmente */
+    }
+    .icono{
+        width: 20%;
+        display: flex;
+        justify-content: center; /* Centra horizontalmente */
+        align-items: center; /* Centra verticalmente */
+        
+    }
+    i {
+        font-size: 24px; /* Tamaño del icono */
+        color: #0263b9; /* Color azul (puedes cambiarlo) */
+    }
+
+    .texto{
+        width: 80%;
+        height: 100%;
+        justify-content: center;
+    }
+    .informacion{
+        font-size: 12px;
+        color: #656363;
+    }
+    .pago-card {
+        margin-top: 5px;
+        margin-bottom: 8px;
+        border-radius: 4px;
+        background-color: #e6e8eb;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding-bottom: 10px;
+        padding: 10px;
+    }
+
+    .numero-pago {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        background-color: #d1d5db;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .cobrador,
+    .vencimiento,
+    .fecha-valor,
+    .estado-capital {
+        width: 100%;
+        text-align: center;
+    }
+
+    .fecha-valor,
+    .estado-capital {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .fecha-pago,
+    .valor-cobrado,
+    .estado,
+    .capital-interes {
+        width: 50%;
+        text-align: center;
+    }
+
+    .texto-gris {
+    color: #656363;
+    }
+
+    .texto-verde {
+    color: green;
+    font-weight: bold;
+    }
+    .sin-pagos {
+        text-align: center;
+        font-size: 16px;
+        color: #656363;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .Total{
+        width: 100%;
+        margin-Top: 15px;
+        margin-bottom: 10%;
+        border-radius: 5px;
+        margin: auto;
+        background-Color: #026292;;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        justify-items: center;
+
+    }
+
+   .button1 {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el ícono y el texto */
+    background-color: #004aad;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    }
+
+    .button1:hover {
+        background-color: #003380;
+    }
+
+    .icono-descarga {
+        width: 20px;
+        height: 20px;
+        fill: white; /* Hace que el SVG herede el color del texto */
+    }
+
+
+</style>
+
+<div class="container">
+    <div class="detalles">
+        <h2 class="letras">Datos del Cliente</h2>
+    </div>
+    
+    {{#each cliente}}
+    <div class="info-cliente">
+        <div class="nombre">
+            <p class="nombre-p">{{name}}</p>
+        </div>
+        
+        <div class="datos">
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-id-card"></i>
+                </div>
+                <div class="texto">
+                    <strong>Documento:</strong>
+                    <p class="informacion">
+                        {{identification}}
+                    </p>
+                </div>
+            </div>
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-university"></i>
+                </div>
+                <div class="texto">
+                    <strong>Tipo de prestamo:</strong>
+                    <p class="informacion">
+                        {{paymentFrequency}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="datos">
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-clock"></i>
+                </div>
+                <div class="texto">
+                    <strong>Dias pendientes:</strong>
+                    <p class="informacion">
+                        {{paymentDays}}
+                    </p>
+                </div>
+            </div>
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-shield-alt"></i>
+                </div>
+                <div class="texto">
+                    <strong>Garantía:</strong>
+                    {{#if guarantee}}
+                        <p class="informacion">
+                            {{guarantee}}
+                        </p>
+                    {{else}}
+                        <p class="informacion">
+                            No registra
+                        </p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+
+        <div class="datos">
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-wallet"></i>
+                </div>
+                <div class="texto">
+                    <strong>Total Deuda:</strong>
+                    <p class="informacion">
+                        {{loanAmount}} $
+                    </p>
+                </div>
+            </div>
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-check-circle"></i>
+                </div>
+                <div class="texto">
+                    <strong>Finalizado:</strong>
+                    <span class="{{#if finalizado}}finalizado-true{{else}}finalizado-false{{/if}}">
+                        {{#if finalizado}}Sí{{else}}No{{/if}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="datos">
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-calendar-check"></i>
+                </div>
+                <div class="texto">
+                    <strong>Fecha del Préstamo:</strong>
+                    <p class="informacion">
+                        {{formatDate loanDate}}
+                    </p>
+                </div>
+            </div>
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-calendar-day"></i>
+                </div>
+                <div class="texto">
+                    <strong>Próximo Pago:</strong>
+                    <p class="informacion">
+                        {{formatDate NextPaymentDate}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="datos-U">
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-calendar-times"></i>
+                </div>
+                <div class="texto">
+                    <strong>Último Pago:</strong>
+                    <p class="informacion">
+                        {{formatDate LastPaymentDate}}
+                    </p>
+                </div>
+            </div>
+            <div class="datos1">
+                <div class="icono">
+                    <i class="fa fa-hourglass-half"></i>
+                </div>
+                <div class="texto">
+                    <strong>Pagos Atrasados:</strong>
+                    <p class="informacion">
+                        {{LatePayments}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario para descargar el PDF -->
+        <form class="form1" action="/GenerarPdf/Clientes" method="POST">
+            <input type="hidden" name="_id" value="{{_id}}" />
+            <button class="log-in button1">
+                <i style="color: white" class="fas fa-download"></i> 
+                <p>Descargar PDF</p>
+            </button>
+
+        </form>
+    </div>
+    {{/each}}
+
+    <div class="detalles">
+        <h2 class="letras">Historial de Pagos</h2>
+    </div>
+
+    {{#if mispagos.length}}
+        {{#each mispagos}}
+            <div class="pago-card">
+                <div class="numero-pago">N° {{numero}}</div>
+                <div class="cobrador">
+                    <p><strong>Cobrador:</strong> {{nameCobrador}}</p>
+                </div>
+                <div class="vencimiento">
+                    <p><strong>Vencimiento:</strong> <span class="texto-gris">{{formatDate FechaVencimiento}}</span></p>
+                </div>
+                <div class="fecha-valor">
+                    <div class="fecha-pago">
+                        <p><strong>Fecha de Pago:</strong> <span class="texto-gris">{{formatDate FechaDelPago}}</span></p>
+                    </div>
+                    <div class="valor-cobrado">
+                        <p><strong>Valor Cobrado:</strong> <span class="texto-gris">{{ValorCobrado}} $</span></p>
+                    </div>
+                </div>
+                <div class="estado-capital">
+                    <div class="estado">
+                        <p><strong>Estado:</strong> <span class="texto-verde">Pagada</span></p>
+                    </div>
+                    <div class="capital-interes">
+                        <p><strong>Capital+Interes</strong></p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+        <p class="sin-pagos">Aún no tiene pagos registrados.</p>
+    {{/if}}
+
+    <div class="Total">
+        <p class="total-cobrado">Total Pagado: {{totalPagosFormateado}}</p>
+    </div>
+</div>
